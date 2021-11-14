@@ -1,13 +1,9 @@
-############################################################################
-# A sample program to create a single-track MIDI file, add a note,
-# and write to disk.
-############################################################################
-
-#Import the library
+#Importing the library
 from midiutil.MidiFile3 import MIDIFile
 import random
+# importing html_link as lnk
 
-# Create the MIDIFile Object
+# Creating the MIDIFile Object
 MyMIDI = MIDIFile(1)
 
 # Improvisation Technique 1
@@ -34,7 +30,7 @@ chord_set_three = [
     (55, 59, 62, 65),
     (53, 57, 60, 63),
     (48, 52, 55, 58),
-    (48, 52, 55, 58),
+    (48, 52, 55, 58)
 ]
 
 # Add track name and tempo. The first argument to addTrackName and
@@ -63,7 +59,7 @@ def play_music(melody, bass, m_t):
     for b in bass:
         #for i in range(4): #play chords 4 times
         for n in b: #at note of each chord tuple
-            # Create chord
+            # Creating chord
             MyMIDI.addNote(track, channel, n, b_time, b_duration, volume)
 
             m_key = random.choice(melody)
@@ -74,17 +70,3 @@ def play_music(melody, bass, m_t):
     binfile = open("music.mid", 'wb')
     MyMIDI.writeFile(binfile)
     binfile.close()
-
-
-play_music(a_minor_scale, chord_set_one, 0.5)
-#play_music(c_blue_melody, chord_set_three, 0.5)
-#play_music(e_blue_melody, chord_set_three, 0.5)
-
-# Now add the note.
-#MyMIDI.addNote(track,channel, 60, 0,duration,volume)
-#MyMIDI.addNote(track,channel, 69, 1,duration,volume)
-
-# And write it to disk.
-#binfile = open("output.mid", 'wb')
-#MyMIDI.writeFile(binfile)
-#binfile.close()
